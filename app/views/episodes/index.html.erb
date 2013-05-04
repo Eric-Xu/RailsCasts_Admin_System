@@ -1,0 +1,15 @@
+<% @episodes.each do |episode| %>
+	<ul>
+		<li>
+			<%= episode.id %>
+			<%= episode.title %><br>
+			<%= episode.description %><br>
+			Tags:
+			<% episode.tags.each do |tag| %>
+				<ul><li><%= link_to tag.name %></li></ul>
+			<% end %>
+		</li>
+		<%= link_to 'Edit', edit_episode_path(episode) %>
+		<%= link_to 'Delete', episode_path(episode) %>
+	</ul>
+<% end %>
