@@ -1,4 +1,6 @@
 class EpisodesController < ApplicationController
+	before_filter :authorize, :except => :index
+
 	def new
 		@episode = Episode.new
 	end
