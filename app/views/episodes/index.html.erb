@@ -11,15 +11,15 @@
 					<%= link_to tag.name %>
 				<% end %>
 			</li>
-			<% if admin? %>
-				<p><%= link_to 'Edit', edit_episode_path(episode) %></p>
-				<p><%= link_to 'Delete', episode_path(episode), :method => :delete, :confirm => 'Are you sure?' %></p>
-			<% end %>
+			<%# if admin? %>
+				<%= link_to 'Edit', edit_episode_path(episode) %>
+				<%= link_to 'Delete', episode_path(episode), :method => :delete, :confirm => 'Are you sure?' %>
+			<%# end %>
 		</ul>
 	<% end %>
 </div>
-<% if admin? %>
+<%# if admin? %>
 	<div class="actions">
 	  <%= link_to "New Episode", new_episode_path %>
 	</div>
-<% end %>
+<%# end %>
