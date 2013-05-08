@@ -1,15 +1,25 @@
-<% @episodes.each do |episode| %>
-	<ul>
-		<li>
-			<%= episode.id %>
-			<%= episode.title %><br>
-			<%= episode.description %><br>
-			Tags:
-			<% episode.tags.each do |tag| %>
-				<ul><li><%= link_to tag.name %></li></ul>
+
+<div class="episodes">
+	<% @episodes.each do |episode| %>
+		<ul>
+			<li>
+				<%= episode.id %>
+				<%= episode.title %><br>
+				<%= episode.description %><br>
+				Tags:
+				<% episode.tags.each do |tag| %>
+					<%= link_to tag.name %>
+				<% end %>
+			</li>
+			<% if admin? %>
+				<p><%= link_to 'Edit', edit_episode_path(episode) %></p>
+				<p><%= link_to 'Delete', episode_path(episode), :method => :delete, :confirm => 'Are you sure?' %></p>
 			<% end %>
-		</li>
-		<%= link_to 'Edit', edit_episode_path(episode) %>
-		<%= link_to 'Delete', episode_path(episode) %>
-	</ul>
+		</ul>
+	<% end %>
+</div>
+<% if admin? %>
+	<div class="actions">
+	  <%= link_to "New Episode", new_episode_path %>
+	</div>
 <% end %>
